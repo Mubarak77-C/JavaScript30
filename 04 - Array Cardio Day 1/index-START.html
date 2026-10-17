@@ -66,10 +66,10 @@
     //bracket [] if have space - anything in property key not value and store in var of object to get access we used []
     console.log(inventors[0]['first']); //Albert;
     //or used store object in var
-    const inventor=inventors[0];
+    const inventor = inventors[0];
     console.log(inventor['first'])
 
-    const inventorLast="last";
+    const inventorLast = "last";
     console.log(inventor[inventorLast])
     //check inventor used where holding arr obj reference in 69 line
 
@@ -78,16 +78,50 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const age=inventors.filter(arr => arr.year>= 1500 && arr.year<1600)
+    const age = inventors.filter(arr => arr.year >= 1500 && arr.year < 1600)
     console.table(age)
-     
+
 
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const fullName = inventors.map((arr) => `${arr.first} ${arr.last}`)
+    console.log(fullName)
+    console.table(fullName)
+
+    //or spread operator ...
+    //this not work because spread operator ...object contain existing all property
+    //when to use ... when we need to do operation or calculating without modifying actual object array data which map creat new obj arr data with key property with manipulate value
+    //but ... won't work on full name which we just need to access not change or calculate perform 
+    // const fsName = inventors.map(inventor=>{
+    //   return {...inventor, first:inventor.first}
+    // } )
+    // console.log(fsName)
+
+    //to access fullName by another ways
+    const allname = inventors.map(inventor => {
+      return {
+        fullName: `${inventor.first} ${inventor.last} birth on ${inventor.year}`
+      };
+    })
+    console.table(allname)
+    console.log(allname)
+
+    //IF YOU WANT TO USED ... BY CONDITION OR SITUATION BY AGE LIVE PERSON FROM DEATH-BIRTH RATE OF EACH THEN 
+    const ageLive = inventors.map(inventor => {
+      const ageDeath = inventor.passed - inventor.year;
+      return {
+        ...inventor, // Copy all existing properties (first, last, year, passed)
+        age: ageDeath // Add a brand new 'age' property
+      };
+    });
+    console.table(ageLive)
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+
+    
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
