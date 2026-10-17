@@ -121,7 +121,7 @@
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
-    const sortBirth=inventors.sort((a,b)=>a.year-b.year)
+    const sortBirth = inventors.sort((a, b) => a.year - b.year)
     console.log(sortBirth)
 
     //youngest to oldest just do b.year-a.year
@@ -135,14 +135,14 @@
     //well above is mistake to understand we need do same first remove agelive then do it
 
     //
-    const totalYear = inventors.reduce((total, inventor)=>{
+    const totalYear = inventors.reduce((total, inventor) => {
       const lifespan = inventor.passed - inventor.year; // Calculate individual lifespan
-      return total+lifespan; // Add it to the running total
-    },0)
+      return total + lifespan; // Add it to the running total
+    }, 0)
     console.log(totalYear)  //861
 
     //well below wrong based question asked it only adding sum up with year only not with above question based
-    const tyear = inventors.reduce((total,inventor)=> total+inventor.year,0);
+    const tyear = inventors.reduce((total, inventor) => total + inventor.year, 0);
     console.log(tyear)  //21130
 
     // 5. Sort the inventors by years lived
@@ -151,7 +151,17 @@
     // }) 
     // console.log(sortLived) //it getting by sort ascending order birth year which not want as condition
 
-    
+    const oldest = inventors.sort((a, b) => {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - a.year;
+
+      // If nextGuy is bigger than lastGuy, it puts nextGuy first
+      return nextGuy-lastGuy;
+    })
+    console.log(oldest)  //longest live
+    console.table(oldest)
+
+    //for shortest-lived to longest-lived,  lastGuy - nextGuy
 
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
