@@ -159,7 +159,7 @@
       return nextGuy-lastGuy;
     })
     console.log(oldest)  //longest live
-    console.table(oldest)
+   // console.table(oldest)
 
     //for shortest-lived to longest-lived,  lastGuy - nextGuy
 
@@ -167,6 +167,15 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    //## we do in above link console here will not work only by API by fetch will need to extract that scrape data
+    const category = document.querySelector('.mw-category');
+const links = [...category.querySelectorAll('a')];
+
+const de = links
+            .map(link => link.textContent)
+            .filter(streetName => streetName.includes('de'));
+
+//console.log(de);  //paste into that link console will work 10 index result includes de value or see clear console.table(de)
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
