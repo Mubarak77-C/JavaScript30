@@ -225,6 +225,20 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
+    const transportation = data.reduce((tally, vehicle) => {
+      // 1. If the vehicle doesn't exist on our tally object yet, create it and set it to 0
+      if (!tally[vehicle]) {
+        tally[vehicle] = 0;
+      }
+
+      // 2. Add 1 to that vehicle's count
+      tally[vehicle]++;
+
+      // 3. Return the tally object for the next loop
+      return tally;
+    }, {}); // <-- Notice the empty object here as the starting point!
+
+    console.log(transportation);
   </script>
 </body>
 
