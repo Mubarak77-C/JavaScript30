@@ -194,14 +194,10 @@
 
         // 3. Map to get just the titles, then filter for 'de'
 
-        const deBoulevards =members.
-        map(item=>item.title).
-        filter(title=>title.includes("de"));
+        const deBoulevards = members.
+          map(item => item.title).
+          filter(title => title.includes("de"));
         console.log(deBoulevards)
-
-
-
-
 
 
       } catch (error) {
@@ -209,10 +205,21 @@
       }
 
     }
-    getBoulevardsViaAPI();
+    //call function
+    //  getBoulevardsViaAPI();
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    //here is array string not obj which get access key here just string
+    const sortAlpha = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split('. ');
+
+      return aLast.localeCompare(bLast);
+    });
+    console.log(sortAlpha)
+
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
